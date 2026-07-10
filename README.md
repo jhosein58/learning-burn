@@ -27,6 +27,7 @@ cargo run --example ch1_02_basic_creation  # run a single example
 
 | Chapter | Topic | Examples |
 |---|---|---|
+| 0 | Rust for Python People | variables, ownership, borrowing, iterators, structs, enums/Option, Result, traits, generics |
 | 1 | Creating Tensors | `ch1_01` … `ch1_09` |
 | 2 | Tensor Operations | arithmetic, broadcasting, reshaping/slicing, reductions, standardize, masking |
 | 3 | Matrix Algebra | matmul, transpose/matvec/outer, structured & batched, linear layer |
@@ -36,6 +37,9 @@ cargo run --example ch1_02_basic_creation  # run a single example
 | 7 | Activation Functions | ReLU family, saturating, softmax |
 | 8 | Loss Functions | MSE, cross-entropy |
 | 9 | Optimizers | SGD training loop |
+| 10 | Backpropagation | chain rule, two-layer backprop, XOR MLP |
+| 11 | Neural Network from Scratch | forward from scratch, manual vs autodiff backward, from-scratch training, gradient check |
+| 12 | Attention & Transformers | scaled dot-product attention, causal masking, multi-head attention, transformer block |
 
 ## License & attribution
 
