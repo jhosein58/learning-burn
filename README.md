@@ -1,5 +1,7 @@
 # Learning Burn — Code Examples
 
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-omidpolyO-FFDD00?logo=buymeacoffee&logoColor=black)](https://www.buymeacoffee.com/omidpolyO)
+
 Compilable, tested code examples that accompany the **Learning Burn** book
 (by H0531N and Bellman281).
 
