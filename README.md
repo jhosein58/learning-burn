@@ -42,6 +42,9 @@ cargo run --example ch1_02_basic_creation  # run a single example
 | 10 | Backpropagation | chain rule, two-layer backprop, XOR MLP |
 | 11 | Neural Network from Scratch | forward from scratch, manual vs autodiff backward, from-scratch training, gradient check |
 | 12 | Attention & Transformers | scaled dot-product attention, causal masking, multi-head attention, transformer block |
+| 13 | Deploying a Model | save/load with recorders, format & precision (f32 vs f16) trade-offs |
+| 14 | Bare-metal / Embedded | weights embedded in binary, backend-agnostic inference, int8 quantization, memory footprint |
+| 15 | Inference with Candle | tensor basics, linear forward pass, MLP + softmax (in the `candle-inference/` crate) |
 
 ## License & attribution
 
