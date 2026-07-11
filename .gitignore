@@ -1,0 +1,19 @@
+# --- Rust build artifacts -------------------------------------------------
+# Matches target/ at any depth (book-tests/, candle-inference/, ...).
+target/
+
+# --- The book itself is NOT open source -----------------------------------
+# Only the *code examples* belong in this repository. The manuscript, its
+# generated PDFs, its figures and the tooling that builds them are the
+# authors' private property and must never be committed here.
+*.pdf
+*.docx
+*.epub
+bookgen/
+manuscript/
+
+# --- Editor / OS noise ----------------------------------------------------
+.DS_Store
+.idea/
+.vscode/
+*.swp
