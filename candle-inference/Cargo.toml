@@ -1,0 +1,10 @@
+[package]
+name = "candle-inference"
+version = "0.1.0"
+edition = "2021"
+
+# Candle (HuggingFace's minimalist Rust ML framework) lives in its own crate so
+# it does not slow down the Burn book-tests build. See src/main.rs.
+
+[dependencies]
+candle-core = "0.11"
