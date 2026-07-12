@@ -9,7 +9,7 @@ fn main() {
     let x = Tensor::<B, 1>::from_floats([-1.0, 0.0, 2.0], &dev);
 
     let y = x.clone().exp().log1p(); // chain transcendental ops
-    println!("y       = {}", y.to_data());
+    println!("y      = {}", y.to_data());
 
     let c = x.clone().clamp(0.0, 1.0); // torch.clamp
     println!("c      = {}", c.to_data());
