@@ -29,6 +29,7 @@ your laptop.**
 | "It needs to run on the device, not the cloud" | `no_std`. Weights compiled into the firmware. **A 2,410-parameter model is 2.4 KB quantised** — it fits on a microcontroller with 256 KB of SRAM. |
 | "It fails at 3 a.m. with a shape error" | Tensor rank is part of the type. `Tensor<B, 2>` and `Tensor<B, 3>` are different types; mixing them doesn't compile. |
 | "Two teams: researchers in Python, engineers rewriting in C++" | One language for both. The training code and the deployed code are the same code. |
+| "Different code for CPU, GPU, and the device" | The backend is a *type parameter*. `run::<NdArray>()`, `run::<Wgpu>()`, `run::<Chip>()` — same function body, chosen at the call site. |
 
 If none of those are your problem, close the tab — with our blessing. If one of
 them is the reason your last project stalled, this repo is worth an afternoon.
@@ -51,42 +52,8 @@ cargo run --example ch10_02_two_layer_backprop  # gradients through a hidden lay
 cargo run --example ch10_03_xor_mlp             # watch it learn XOR from scratch
 ```
 
-No GPU needed — everything runs on the CPU (`ndarray`) backend.
-
 Attention, transformers, quantisation and bare-metal inference are in open PRs and
-land shortly; see **Status** below.
-
----
-
-## The three things that will confuse you first
-
-Coming from PyTorch, these are the ones that actually cost people a day:
-
-**1. `backward()` returns the gradients. It does not attach them.**
-
-```rust
-let grads = loss.backward();      // <- a container, RETURNED
-let dw = w.grad(&grads).unwrap(); // <- you look it up
-```
-
-No `.grad` on the tensor, and therefore **no `zero_grad()`** — there is nothing to
-accumulate into, so the classic "forgot to zero the gradients" bug is unwriteable.
-
-**2. There is no `no_grad()` block.**
-
-Autodiff is a *wrapper around the backend*, not a mode you enter.
-`Autodiff<NdArray>` tracks gradients; `NdArray` doesn't. To do inference, you drop
-the wrapper — `x.inner()` — or just type your model over the plain backend. There is
-no `model.eval()` to forget.
-
-**3. Operations consume their inputs.**
-
-```rust
-let c = a.clone() + b;   // `a` is moved unless you clone it
-```
-
-Every `.clone()` you see is the code saying *"I need this value again."* It looks
-like noise for about a chapter, then it starts looking like documentation.
+land shortly.
 
 ---
 
@@ -112,34 +79,6 @@ Full list in [`book-tests/examples/`](book-tests/examples/).
 
 ---
 
-## Status
-
-**Code:** 43 of 60 examples merged; the rest are open PRs.
-
-**Book:** first full draft complete — 16 chapters, 185 pages, 61 figures. Not
-edited, not published. **Watch this repo** and you'll know when it is.
-
-The book has no copy of the code: every listing is read out of *this repository* at
-build time, and every program output it quotes comes from a file produced by
-actually running that example. So the book cannot drift from the code, and the
-examples you run here are the ones you'll read there.
-
----
-
-## Contributing
-
-**An example that doesn't run is a bug — file it, and paste the output.** That is
-the report we most want.
-
-If you want something meatier: `burn::tensor::linalg` ships `lu` (LU decomposition
-with partial pivoting) but has **no `solve`**. LU is exactly what a `solve` is built
-from — factor `A = PLU`, then forward- and back-substitute. The hard, numerically
-delicate part is already in the library; the substitution pass on top is not. It's a
-well-scoped contribution to Burn itself, and it's wanted:
-[burn#1538](https://github.com/tracel-ai/burn/issues/1538).
-
----
-
 ## Credit
 
 Built on [**Burn**](https://github.com/tracel-ai/burn) (pinned to 0.21.0). The
@@ -149,6 +88,6 @@ not us.** They did the hard part.
 
 ## License
 
-Apache 2.0 — see [`LICENSE`](LICENSE). Copyright © 2026 **H0531N** and
-**Bellman281**. If you adapt these examples, please attribute
+Apache 2.0 — see [`LICENSE`](LICENSE). Copyright © 2026 **Bellman281** and
+**H0531N**. If you adapt these examples, please attribute
 <https://github.com/jhosein58/learning-burn> — see [`NOTICE`](NOTICE).
