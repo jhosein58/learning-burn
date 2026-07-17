@@ -37,3 +37,27 @@ A tensor with shape `[5]` has:
 - Shape: **[5]**
 
 These are different concepts, and confusing them is one of the most common mistakes when learning tensor libraries.
+
+## Files
+
+| File | What it is |
+|---|---|
+| `rust.rs` | The Burn version, plus a `#[test]` that checks the result. |
+| `python.py` | The PyTorch equivalent, plus a `pytest` test that checks the same result. |
+
+## Run it
+
+```bash
+cargo run --example c1e1        # Burn
+python python.py                # PyTorch
+```
+
+## Verify parity
+
+Both sides assert the **same golden values** — rank 1, shape `[5]`, values
+`[1, 2, 3, 4, 5]` — so if either framework drifts, its test fails.
+
+```bash
+cargo test --example c1e1       # Burn test (note: --example, not plain `cargo test`)
+pytest python.py                # PyTorch test
+```

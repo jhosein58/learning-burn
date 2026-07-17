@@ -1,25 +1,34 @@
 # Example 1.2 — Creating Tensors from Data
 
-This example demonstrates the two standard ways to create a tensor in Burn.
+Two standard ways to create a tensor in Burn, and their PyTorch equivalents.
 
 ## What this example shows
 
-Burn provides two constructors:
-
 ```rust
-Tensor::from_floats(...)
+Tensor::from_floats(...)   // ergonomic for floating-point arrays
+Tensor::from_data(...)     // generic constructor via TensorData
 ```
 
-and
+Both create the same tensor; they differ only in how the input is provided.
+Every tensor is created on an explicit **device**.
 
-```rust
-Tensor::from_data(...)
+## Files
+
+| File | What it is |
+|---|---|
+| `rust.rs` | Burn version + `#[test]`. |
+| `python.py` | PyTorch equivalent + `pytest` test. |
+
+## Run & test
+
+```bash
+cargo run  --example c1e2
+cargo test --example c1e2
+python python.py
+pytest python.py
 ```
 
-Both create the same tensor; they only differ in how the input data is provided.
+## Parity
 
-## Key takeaway
-
-* `from_floats` is the ergonomic choice for floating-point arrays.
-* `from_data` is the generic constructor using `TensorData`.
-* Every tensor is created on a specific **device**, which is passed explicitly.
+Both sides assert the same values: `a = [1, 2, 3]` and
+`m = [[1, 2, 3], [4, 5, 6]]` with shape `[2, 3]`.

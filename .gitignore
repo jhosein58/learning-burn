@@ -19,3 +19,7 @@ manuscript/
 .vscode/
 *.swp
 candle-inference/Cargo.lock
+
+/target
+.venv/
+__pycache__/
