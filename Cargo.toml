@@ -86,3 +86,12 @@ path = "examples/chapter03/e02_transpose_matvec_outer/rust.rs"
 [[example]]
 name = "c3e3"
 path = "examples/chapter03/e03_structured_and_batched/rust.rs"
+
+# Chapter 4 — Norms, Determinant, Gram Matrix
+[[example]]
+name = "c4e1"
+path = "examples/chapter04/e01_vector_norm/rust.rs"
+
+[[example]]
+name = "c4e2"
+path = "examples/chapter04/e02_gram_matrix/rust.rs"
