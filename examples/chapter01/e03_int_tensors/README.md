@@ -14,16 +14,12 @@ This mirrors the float example (e02) exactly: only the `Int` slot and
 
 | File | What it is |
 |---|---|
-| `rust.rs` | Burn version + `#[test]`. |
-| `python.py` | PyTorch equivalent + `pytest` test. |
+| `rust.rs` | Burn version. |
 
 ## Run & test
 
 ```bash
 cargo run  --example c1e3
-cargo test --example c1e3
-python python.py
-pytest python.py
 ```
 
 ## Parity

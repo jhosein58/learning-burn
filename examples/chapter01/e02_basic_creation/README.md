@@ -16,16 +16,14 @@ Every tensor is created on an explicit **device**.
 
 | File | What it is |
 |---|---|
-| `rust.rs` | Burn version + `#[test]`. |
-| `python.py` | PyTorch equivalent + `pytest` test. |
+| `rust.rs` | Burn version. |
+| `python.py` | PyTorch equivalent. |
 
 ## Run & test
 
 ```bash
 cargo run  --example c1e2
-cargo test --example c1e2
 python python.py
-pytest python.py
 ```
 
 ## Parity
