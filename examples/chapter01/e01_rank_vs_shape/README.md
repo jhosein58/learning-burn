@@ -43,13 +43,11 @@ These are different concepts, and confusing them is one of the most common mista
 | File | What it is |
 |---|---|
 | `rust.rs` | The Burn version, plus a `#[test]` that checks the result. |
-| `python.py` | The PyTorch equivalent, plus a `pytest` test that checks the same result. |
 
 ## Run it
 
 ```bash
 cargo run --example c1e1        # Burn
-python python.py                # PyTorch
 ```
 
 ## Verify parity
@@ -59,5 +57,4 @@ Both sides assert the **same golden values** — rank 1, shape `[5]`, values
 
 ```bash
 cargo test --example c1e1       # Burn test (note: --example, not plain `cargo test`)
-pytest python.py                # PyTorch test
 ```
