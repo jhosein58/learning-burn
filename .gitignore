@@ -1,6 +1,7 @@
 # --- Rust build artifacts -------------------------------------------------
 # Matches target/ at any depth (book-tests/, candle-inference/, ...).
 target/
+Cargo.lock
 
 # --- The book itself is NOT open source -----------------------------------
 # Only the *code examples* belong in this repository. The manuscript, its
@@ -18,3 +19,7 @@ manuscript/
 .vscode/
 *.swp
 candle-inference/Cargo.lock
+
+/target
+.venv/
+__pycache__/
