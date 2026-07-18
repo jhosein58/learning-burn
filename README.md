@@ -7,9 +7,7 @@
 
 Deep learning in Rust, for people who already do it in Python.
 
-Runnable code for every idea in the *Learning Burn* book — tensors, autodiff,
-backprop, transformers, quantisation, bare-metal inference — each a single file
-you can `cargo run` and read.
+Runnable Rust and Python examples for every idea in the *Learning Burn* book. Use the built-in CLI to launch any example by chapter, example number, and language.
 
 ---
 
@@ -40,20 +38,28 @@ otherwise would waste your time.
 
 ---
 
-## Sixty seconds
+## Running examples
+
+Clone the repository and navigate to the `learning-burn` directory.
 
 ```bash
 git clone https://github.com/jhosein58/learning-burn
-cd learning-burn/rust-examples
-
-cargo run --example ch5_01_backward_gradient    # autodiff: df/dx of sum(x²) is 2x
-cargo run --example ch9_01_sgd_training         # a real training loop, 20 lines
-cargo run --example ch10_02_two_layer_backprop  # gradients through a hidden layer
-cargo run --example ch10_03_xor_mlp             # watch it learn XOR from scratch
+cd learning-burn
 ```
 
-Attention, transformers, quantisation and bare-metal inference are in open PRs and
-land shortly.
+Examples are organized by chapter and example number.
+
+```bash
+cargo run -- -c <chapter> -e <example> <language>
+```
+
+
+Example:
+
+```bash
+cargo run -- -c 2 -e 4 rust
+cargo run -- -c 3 -e 1 python
+```
 
 ---
 
@@ -75,7 +81,7 @@ against autodiff.
 into the binary, backend-agnostic inference, int8 quantisation, memory footprint ·
 running pretrained models with Candle, and when to use it instead of Burn.
 
-Full list in [`rust-examples/examples/`](rust-examples/examples/).
+Full list in [`examples/`](examples/).
 
 ---
 

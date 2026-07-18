@@ -3,48 +3,11 @@ name = "learning-burn"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+resolver = "3"
+members = [
+    "examples/*/*/rust",
+]
+
 [dependencies]
-burn = { version = "0.21.0", features = ["ndarray", "autodiff"] }
-
-# ---------------------------------------------------------------------------
-# Chapter 1 — Creating Tensors
-# One [[example]] per folder. Run with `cargo run --example c1eN`;
-# run its parity test with `cargo test --example c1eN` (NOT plain `cargo test`,
-# which skips example targets).
-# ---------------------------------------------------------------------------
-
-[[example]]
-name = "c1e1"
-path = "examples/chapter01/e01_rank_vs_shape/rust.rs"
-
-[[example]]
-name = "c1e2"
-path = "examples/chapter01/e02_basic_creation/rust.rs"
-
-[[example]]
-name = "c1e3"
-path = "examples/chapter01/e03_int_tensors/rust.rs"
-
-[[example]]
-name = "c1e4"
-path = "examples/chapter01/e04_filled_structured/rust.rs"
-
-[[example]]
-name = "c1e5"
-path = "examples/chapter01/e05_random_tensors/rust.rs"
-
-[[example]]
-name = "c1e6"
-path = "examples/chapter01/e06_from_custom_type/rust.rs"
-
-[[example]]
-name = "c1e7"
-path = "examples/chapter01/e07_tensor_data_bridge/rust.rs"
-
-[[example]]
-name = "c1e8"
-path = "examples/chapter01/e08_ownership_cloning/rust.rs"
-
-[[example]]
-name = "c1e9"
-path = "examples/chapter01/e09_display_and_closeness/rust.rs"
+clap = { version = "4.6.2", features = ["derive"] }
