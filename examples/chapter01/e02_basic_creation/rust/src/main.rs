@@ -5,7 +5,6 @@ type Backend = NdArray;
 
 fn main() {
     let device = Default::default();
-
     // from_floats: most ergonomic for f32 data
     let a = Tensor::<Backend, 1>::from_floats([1.0, 2.0, 3.0], &device);
 
