@@ -12,7 +12,7 @@ fn main() {
     // Operators and their named-method equivalents; reused tensors are cloned.
     let s = a.clone() + b.clone(); // or a.clone().add(b.clone())
     let p = a.clone() * b.clone(); // element-wise, NOT matmul
-    let sc = a.clone().mul_scalar(2.0); // or a.clone().mul_scalar(2.0)
+    let sc = a.clone().mul_scalar(2.0); // or a.clone() * 2.0
     let neg = -a;
 
     println!("sum    = {}", s.to_data()); // [11.0, 22.0, 33.0]
