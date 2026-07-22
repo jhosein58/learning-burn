@@ -36,6 +36,7 @@ fn main() {
 
     // weighted average of the value rows.
     let out = weights.clone().matmul(v);
+
     println!("scores  =\n{}", scores.to_data()); // [[0.7071, 0], [0, 0.7071]]
     println!("weights =\n{}", weights.to_data()); // [[0.6698, 0.3302], [0.3302, 0.6698]]
     println!("output  =\n{}", out.to_data()); // [[1.6605, 2.6605], [2.3395, 3.3395]]
