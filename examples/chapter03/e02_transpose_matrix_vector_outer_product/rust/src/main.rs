@@ -12,10 +12,10 @@ fn main() {
     let mt = m.clone().transpose(); // or .t()
     let mv = linalg::matvec(m.clone(), v.clone()); // matrix * vector -> [2]
     let d = v.clone().dot(v.clone()); // scalar dot product
-    let op: Tensor<B, 2> = linalg::outer(v.clone(), v); // outer product -> [2, 2]
+    let op: Tensor<B, 2> = linalg::outer(v.clone(), v.clone()); // outer product -> [2, 2]
 
-    println!("transpose =\n{}", mt.to_data());
+    println!("transpose = {}", mt.to_data()); // [1.0, 3.0, 2.0, 4.0]
     println!("matvec    = {}", mv.to_data()); // [3.0, 7.0]
     println!("dot       = {}", d.to_data()); // [2.0]
-    println!("outer     =\n{}", op.to_data());
+    println!("outer     = {}", op.to_data()); // [1.0, 1.0, 1.0, 1.0]
 }
