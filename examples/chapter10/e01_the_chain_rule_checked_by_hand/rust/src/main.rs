@@ -5,12 +5,12 @@ use burn::tensor::Tensor;
 //
 //
 // We compose loss = (a * b)^2 and let autodiff walk the chain rule for us.
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let a = Tensor::<Backend, 1>::from_floats([2.0], &device).require_grad();
-    let b = Tensor::<Backend, 1>::from_floats([3.0], &device).require_grad();
+    let a = Tensor::<B, 1>::from_floats([2.0], &dev).require_grad();
+    let b = Tensor::<B, 1>::from_floats([3.0], &dev).require_grad();
 
     // Forward pass, one node at a time.
     let u = a.clone() * b.clone(); // u = a*b= 6
