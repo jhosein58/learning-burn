@@ -10,7 +10,7 @@ y = torch.tensor([[3.], [5.], [7.], [9.]])  # y = 2x + 1
 for _ in range(3000):
     pred = model(x)
     loss = nn.functional.mse_loss(pred, y)
-    optim.zero_grad()
+    optim.zero_grad()                       # <-- Burn does not need this    
     loss.backward()                         
     optim.step()
 
