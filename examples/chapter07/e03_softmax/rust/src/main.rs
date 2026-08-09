@@ -1,13 +1,13 @@
 use burn::backend::NdArray;
 use burn::tensor::{Tensor, activation};
 
-type Backend = NdArray;
+type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // logits: [batch, num_classes]
-    let logits = Tensor::<Backend, 2>::from_floats([[1.0, 2.0, 3.0]], &device);
+    let logits = Tensor::<B, 2>::from_floats([[1.0, 2.0, 3.0]], &dev);
 
     // softmax over the class dimension; each row sums to 1.
     let probs = activation::softmax(logits.clone(), 1);

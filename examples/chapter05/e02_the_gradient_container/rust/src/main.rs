@@ -1,7 +1,5 @@
 use burn::backend::{Autodiff, NdArray};
 use burn::tensor::Tensor;
-
-
 type B = Autodiff<NdArray>;
 
 // Unlike PyTorch (which stores each gradient on the tensor as `.grad`), Burn's
