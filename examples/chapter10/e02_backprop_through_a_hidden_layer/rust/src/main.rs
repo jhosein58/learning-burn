@@ -3,14 +3,7 @@ use burn::tensor::Tensor;
 use burn::tensor::activation::relu;
 // The heart of backpropagation: gradients flow *through a hidden layer* back to
 // the first weight matrix. We build a tiny 2-layer net by hand with fixed
-// weights so every number is reproducible:
-//
-//      h_pre = x @ W1          (pre-activation)
-//      h     = relu(h_pre)     (hidden activations)
-//      out   = h @ W2
-//      loss  = (out - target)^2
-//
-// PyTorch counterpart: same tensors with requires_grad=True, then loss.backward().
+// weights so every number is reproducible.
 // Because relu'(z) = 1 for z > 0, the gradient passes cleanly to both layers here.
 type B = Autodiff<NdArray>;
 
