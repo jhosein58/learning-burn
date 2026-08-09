@@ -13,7 +13,7 @@ fn main() {
     let up = m.clone().triu(0); // upper-triangular part
     let tr: Tensor<B, 1> = linalg::trace(m); // sum of the diagonal
 
-    println!("identity     =\n{}", eye.to_data());
+    println!("identity     = {}", eye.to_data());
     println!("lo           = {}", lo.to_data());
     println!("up           = {}", up.to_data());
     println!("trace        = {}", tr.to_data());
