@@ -3,14 +3,6 @@ use burn::tensor::Tensor;
 
 // Backpropagation IS the chain rule applied backwards through a computation.
 //
-// PyTorch counterpart:
-//              a = torch.tensor([2.0], requires_grad=True)
-//              b = torch.tensor([3.0], requires_grad=True)
-//              u = a * b
-//              v = u * u
-//              loss = v.sum()
-//              loss.backward()
-//              a.grad, b.grad # -> 36, 24
 //
 // We compose loss = (a * b)^2 and let autodiff walk the chain rule for us.
 type Backend = Autodiff<NdArray>;
