@@ -10,8 +10,7 @@ use burn::tensor::backend::Backend;
 // Linear layer can never solve it. A 2-layer net (Linear -> tanh -> Linear) can,
 // but only because backprop pushes gradients through the hidden layer.
 //
-// PyTorch counterpart: nn.Sequential(nn.Linear(2,8), nn.Tanh(), nn.Linear(8,1))
-// trained with MSELoss + SGD.
+// trained with MseLoss + SGD.
 type MyBackend = Autodiff<NdArray>;
 
 #[derive(Module, Debug)]
