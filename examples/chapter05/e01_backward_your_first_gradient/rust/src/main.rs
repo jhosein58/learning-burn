@@ -2,13 +2,13 @@ use burn::backend::{Autodiff, NdArray};
 use burn::tensor::Tensor;
 
 // Autodiff is a backend *decorator*: wrap any backend to get gradients.
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // f(x) = sum(x^2). By hand, df/dx = 2x.
-    let x = Tensor::<Backend, 1>::from_floats([1.0, 2.0, 3.0], &device).require_grad();
+    let x = Tensor::<B, 1>::from_floats([1.0, 2.0, 3.0], &dev).require_grad();
     let f = (x.clone() * x.clone()).sum(); // 1 + 4 + 9 = 14
 
     // One call computes the gradient for us.

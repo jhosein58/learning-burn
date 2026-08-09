@@ -1,6 +1,6 @@
 import torch
 
-x = torch.tensor([1., 2., 3.])
+x = torch.tensor([1., 2., 3.], requires_grad=True)
 
 with torch.no_grad():   # PyTorch: a context manager
     y = x + 5.0         # no graph is recorded inside here
