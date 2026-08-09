@@ -1,21 +1,21 @@
 use burn::backend::{Autodiff, NdArray};
 use burn::tensor::Tensor;
 
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 
 // Instead of deriving the MSE gradient by hand (ch6_01), let autodiff compute it.
 // At w = 0 the gradient equals -(2/n) X^T y, which is [-12, -35] for this data.
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let x = Tensor::<Backend, 2>::from_floats(
+    let x = Tensor::<B, 2>::from_floats(
         [[1.0, 1.0], [1.0, 2.0], [1.0, 3.0], [1.0, 4.0]],
-        &device,
+        &dev,
     );
 
-    let y = Tensor::<Backend, 2>::from_floats([[3.0], [5.0], [7.0], [9.0]], &device);
+    let y = Tensor::<B, 2>::from_floats([[3.0], [5.0], [7.0], [9.0]], &dev);
 
-    let w = Tensor::<Backend, 2>::zeros([2, 1], &device).require_grad();
+    let w = Tensor::<B, 2>::zeros([2, 1], &dev).require_grad();
 
     let pred = x.matmul(w.clone());
     let diff = pred - y;
