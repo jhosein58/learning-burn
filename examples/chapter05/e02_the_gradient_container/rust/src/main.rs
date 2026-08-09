@@ -1,14 +1,16 @@
 use burn::backend::{Autodiff, NdArray};
 use burn::tensor::Tensor;
-type Backend = Autodiff<NdArray>;
+
+
+type B = Autodiff<NdArray>;
 
 // Unlike PyTorch (which stores each gradient on the tensor as `.grad`), Burn's
 // `backward()` RETURNS all gradients in a container, and you look each one up.
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let a = Tensor::<Backend, 1>::from_floats([2.0, 3.0], &device).require_grad();
-    let b = Tensor::<Backend, 1>::from_floats([4.0, 5.0], &device).require_grad();
+    let a = Tensor::<B, 1>::from_floats([2.0, 3.0], &dev).require_grad();
+    let b = Tensor::<B, 1>::from_floats([4.0, 5.0], &dev).require_grad();
 
     // L = sum(a * b) -> dL/da = b, dL/db = a
 
