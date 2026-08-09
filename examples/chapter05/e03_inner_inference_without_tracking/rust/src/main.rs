@@ -9,7 +9,7 @@ type Backend = Autodiff<NdArray>;
 fn main() {
     let device = Default::default();
 
-    let x = Tensor::<Backend, 1>::from_floats([1.0, 2.0, 3.0], &device);
+    let x = Tensor::<Backend, 1>::from_floats([1.0, 2.0, 3.0], &device).require_grad();
 
     // Peel off the autodiff graph -> a plain NdArray tensor, no tracking.
     let plain = x.inner();
