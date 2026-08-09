@@ -1,22 +1,22 @@
 use burn::backend::NdArray;
 use burn::tensor::Tensor;
 
-type Backend = NdArray;
+type B = NdArray;
 
 // Fit y = b + slope * x by gradient descent, computing the MSE gradient by hand.
 // Data is generated from y = 2x + 1, so w should converge to [1, 2].
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // Design matrix with a bias column: rows are [1, x_i].
-    let x = Tensor::<Backend, 2>::from_floats(
+    let x = Tensor::<B, 2>::from_floats(
         [[1.0, 1.0], [1.0, 2.0], [1.0, 3.0], [1.0, 4.0]],
-        &device,
+        &dev,
     );
 
-    let y = Tensor::<Backend, 2>::from_floats([[3.0], [5.0], [7.0], [9.0]], &device); // y = 2x + 1
+    let y = Tensor::<B, 2>::from_floats([[3.0], [5.0], [7.0], [9.0]], &dev); // y = 2x + 1
 
-    let mut w = Tensor::<Backend, 2>::zeros([2, 1], &device); // [bias, slope]
+    let mut w = Tensor::<B, 2>::zeros([2, 1], &dev); // [bias, slope]
 
     let n = 4.0;
     let lr = 0.05;
