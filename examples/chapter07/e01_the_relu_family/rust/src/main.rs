@@ -1,12 +1,12 @@
 use burn::backend::NdArray;
 use burn::tensor::{activation, Tensor};
 
-type Backend = NdArray;
+type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let x = Tensor::<Backend, 1>::from_floats([-2.0, -0.5, 0.0, 1.0, 3.0], &device);
+    let x = Tensor::<B, 1>::from_floats([-2.0, -0.5, 0.0, 1.0, 3.0], &dev);
 
     let relu = activation::relu(x.clone());
     let leaky = activation::leaky_relu(x.clone(), 0.1);
