@@ -6,10 +6,10 @@ use burn::optim::{AdamConfig, AdamWConfig, SgdConfig};
 type B = Autodiff<NdArray>;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // A small trainable model used only to specify the optimizer module type.
-    let _model = LinearConfig::new(1, 1).init::<B>(&device);
+    let _model = LinearConfig::new(1, 1).init::<B>(&dev);
 
     // Plain stochastic gradient descent.
     let _sgd = SgdConfig::new().init::<B, Linear<B>>();
