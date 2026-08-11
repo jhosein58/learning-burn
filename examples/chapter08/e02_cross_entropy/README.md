@@ -10,4 +10,4 @@ This example shows how to calculate the Cross-Entropy Loss, which is the standar
 
 ### API Mapping & Implementation in Burn
 - **Target Tensor Types:** The target indices must be passed as integer tensors (`Tensor<B, 1, Int>`).
-- **Configuration Pattern:** Instead of instantiating the struct directly, Burn uses a config pattern: `CrossEntropyLossConfig::new().init(&device)`.
+- **Configuration Pattern:** Instead of instantiating the struct directly, Burn uses a config pattern: `CrossEntropyLossConfig::new().init(&dev)`.

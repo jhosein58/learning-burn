@@ -6,7 +6,7 @@ use burn::tensor::{Tensor, TensorData};
 type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     let student_logits = Tensor::<B, 2>::from_data(
         TensorData::from([
@@ -14,7 +14,7 @@ fn main() {
             [0.1, 1.2, 0.3, -0.5],
             [-0.2, 0.4, 1.5, 0.8],
         ]),
-        &device,
+        &dev,
     );
 
     let teacher_logits = Tensor::<B, 2>::from_data(
@@ -23,7 +23,7 @@ fn main() {
             [-0.1, 1.6, 0.2, -0.3],
             [0.0, 0.7, 1.2, 0.4],
         ]),
-        &device,
+        &dev,
     );
 
     // KL divergence expects log-probabilities for predictions.
