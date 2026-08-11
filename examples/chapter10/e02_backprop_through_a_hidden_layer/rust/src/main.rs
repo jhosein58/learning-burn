@@ -3,26 +3,19 @@ use burn::tensor::Tensor;
 use burn::tensor::activation::relu;
 // The heart of backpropagation: gradients flow *through a hidden layer* back to
 // the first weight matrix. We build a tiny 2-layer net by hand with fixed
-// weights so every number is reproducible:
-//
-//      h_pre = x @ W1          (pre-activation)
-//      h     = relu(h_pre)     (hidden activations)
-//      out   = h @ W2
-//      loss  = (out - target)^2
-//
-// PyTorch counterpart: same tensors with requires_grad=True, then loss.backward().
+// weights so every number is reproducible.
 // Because relu'(z) = 1 for z > 0, the gradient passes cleanly to both layers here.
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let x = Tensor::<Backend, 2>::from_floats([[1.0, 2.0]], &device);
-    let target = Tensor::<Backend, 2>::from_floats([[1.0]], &device);
+    let x = Tensor::<B, 2>::from_floats([[1.0, 2.0]], &dev);
+    let target = Tensor::<B, 2>::from_floats([[1.0]], &dev);
 
     // Fixed weights so the gradients are deterministic and hand-checkable.
-    let w1 = Tensor::<Backend, 2>::from_floats([[0.1, 0.2], [0.3, 0.4]], &device).require_grad();
-    let w2 = Tensor::<Backend, 2>::from_floats([[0.5], [0.6]], &device).require_grad();
+    let w1 = Tensor::<B, 2>::from_floats([[0.1, 0.2], [0.3, 0.4]], &dev).require_grad();
+    let w2 = Tensor::<B, 2>::from_floats([[0.5], [0.6]], &dev).require_grad();
 
     // Forward pass.
     let h_pre = x.matmul(w1.clone()); // [[0.7, 1.0]]
