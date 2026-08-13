@@ -1,5 +1,9 @@
 # Learning Burn
 
+<p align="center">
+  <img src="img/cover.png" alt="Learning Burn — book cover" width="360">
+</p>
+
 [![Burn](https://img.shields.io/badge/burn-0.21.0-3b5b92)](https://github.com/tracel-ai/burn)
 [![Rust](https://img.shields.io/badge/rust-2024_edition-dea584?logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
