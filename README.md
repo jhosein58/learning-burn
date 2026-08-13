@@ -101,7 +101,7 @@ not us.** They did the hard part.
 Apache 2.0 — see [`LICENSE`](LICENSE). Copyright © 2026 
 
 **Omid Safarzadeh** ([@Bellman281](https://github.com/Bellman281)),
-**Hossein Jalili** ([@jhosein58](https://github.com/jhosein58)),
+**Hossein Jalili** ([@jhosein58](https://github.com/jhosein58))
 and **Pooya Mohammadi** ([@pooya-mohammadi](https://github.com/pooya-mohammadi)).
 
 If you adapt
