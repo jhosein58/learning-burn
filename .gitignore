@@ -3,6 +3,8 @@
 target/
 Cargo.lock
 
+/sample
+
 # --- The book itself is NOT open source -----------------------------------
 # Only the *code examples* belong in this repository. The manuscript, its
 # generated PDFs, its figures and the tooling that builds them are the

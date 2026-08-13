@@ -1,0 +1,14 @@
+[package]
+name = "c1e5_hist"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+burn = { version = "0.21.0", features = ["ndarray"] }
+plotters = { version = "0.3", default-features = false, features = [
+    "bitmap_backend",
+    "bitmap_encoder",
+    "histogram",
+    # ab_glyph rasterises fonts in pure Rust; "ttf" would need libfontconfig1-dev
+    "ab_glyph",
+] }

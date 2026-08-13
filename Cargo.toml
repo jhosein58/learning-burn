@@ -3,108 +3,12 @@ name = "learning-burn"
 version = "0.1.0"
 edition = "2024"
 
+[workspace]
+resolver = "3"
+members = [
+    "examples/*/*/rust",
+    "examples/*/*/exercise",
+]
+
 [dependencies]
-burn = { version = "0.21.0", features = ["ndarray", "autodiff"] }
-
-# ---------------------------------------------------------------------------
-# One [[example]] per folder. Run with `cargo run --example cNeM`;
-# run its parity test with `cargo test --example cNeM` (NOT plain `cargo test`,
-# which skips example targets).
-# ---------------------------------------------------------------------------
-
-# Chapter 1 — Creating Tensors
-[[example]]
-name = "c1e1"
-path = "examples/chapter01/e01_rank_vs_shape/rust.rs"
-
-[[example]]
-name = "c1e2"
-path = "examples/chapter01/e02_basic_creation/rust.rs"
-
-[[example]]
-name = "c1e3"
-path = "examples/chapter01/e03_int_tensors/rust.rs"
-
-[[example]]
-name = "c1e4"
-path = "examples/chapter01/e04_filled_structured/rust.rs"
-
-[[example]]
-name = "c1e5"
-path = "examples/chapter01/e05_random_tensors/rust.rs"
-
-[[example]]
-name = "c1e6"
-path = "examples/chapter01/e06_from_custom_type/rust.rs"
-
-[[example]]
-name = "c1e7"
-path = "examples/chapter01/e07_tensor_data_bridge/rust.rs"
-
-[[example]]
-name = "c1e8"
-path = "examples/chapter01/e08_ownership_cloning/rust.rs"
-
-[[example]]
-name = "c1e9"
-path = "examples/chapter01/e09_display_and_closeness/rust.rs"
-
-# Chapter 2 — Tensor Operations
-[[example]]
-name = "c2e1"
-path = "examples/chapter02/e01_arithmetic/rust.rs"
-
-[[example]]
-name = "c2e2"
-path = "examples/chapter02/e02_broadcasting/rust.rs"
-
-[[example]]
-name = "c2e3"
-path = "examples/chapter02/e03_reshaping_slicing/rust.rs"
-
-[[example]]
-name = "c2e4"
-path = "examples/chapter02/e04_reductions/rust.rs"
-
-[[example]]
-name = "c2e5"
-path = "examples/chapter02/e05_standardize_features/rust.rs"
-
-[[example]]
-name = "c2e6"
-path = "examples/chapter02/e06_elementwise_masking/rust.rs"
-
-# Chapter 3 — Matrix Operations
-[[example]]
-name = "c3e1"
-path = "examples/chapter03/e01_matmul/rust.rs"
-
-[[example]]
-name = "c3e2"
-path = "examples/chapter03/e02_transpose_matvec_outer/rust.rs"
-
-[[example]]
-name = "c3e3"
-path = "examples/chapter03/e03_structured_and_batched/rust.rs"
-
-# Chapter 4 — Norms, Determinant, Gram Matrix
-[[example]]
-name = "c4e1"
-path = "examples/chapter04/e01_vector_norm/rust.rs"
-
-[[example]]
-name = "c4e2"
-path = "examples/chapter04/e02_gram_matrix/rust.rs"
-
-# Chapter 5 — Autodiff
-[[example]]
-name = "c5e1"
-path = "examples/chapter05/e01_backward_gradient/rust.rs"
-
-[[example]]
-name = "c5e2"
-path = "examples/chapter05/e02_gradient_container/rust.rs"
-
-[[example]]
-name = "c5e3"
-path = "examples/chapter05/e03_inner_inference/rust.rs"
+clap = { version = "4.6.2", features = ["derive"] }
