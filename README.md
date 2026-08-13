@@ -1,5 +1,9 @@
 # Learning Burn
 
+<p align="center">
+  <img src="img/cover.png" alt="Learning Burn — book cover" width="360">
+</p>
+
 [![Burn](https://img.shields.io/badge/burn-0.21.0-3b5b92)](https://github.com/tracel-ai/burn)
 [![Rust](https://img.shields.io/badge/rust-2024_edition-dea584?logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
@@ -88,6 +92,8 @@ not us.** They did the hard part.
 
 ## License
 
-Apache 2.0 — see [`LICENSE`](LICENSE). Copyright © 2026 **Bellman281** and
-**H0531N**. If you adapt these examples, please attribute
-<https://github.com/jhosein58/learning-burn> — see [`NOTICE`](NOTICE).
+Apache 2.0 — see [`LICENSE`](LICENSE). Copyright © 2026 **Omid Safarzadeh**
+([@Bellman281](https://github.com/Bellman281)), **Hossein Jalili**
+([@H0531N](https://github.com/H0531N)), and **Pooya Mohammadi**. If you adapt
+these examples, please attribute <https://github.com/jhosein58/learning-burn>
+— see [`NOTICE`](NOTICE).
