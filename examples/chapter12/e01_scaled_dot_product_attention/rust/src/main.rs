@@ -15,15 +15,15 @@ use burn::tensor::Tensor;
 //      w = torch.softmax(Q @ K.T / d_k**0.5, dim=1); out = w @ V
 //
 //
-type Backend = NdArray;
+type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // seq_len = 2, d_k = 2. Q and K are the identity so the scores are easy to read.
-    let q = Tensor::<Backend, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &device);
-    let k = Tensor::<Backend, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &device);
-    let v = Tensor::<Backend, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &device);
+    let q = Tensor::<B, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &dev);
+    let k = Tensor::<B, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &dev);
+    let v = Tensor::<B, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &dev);
 
     let d_k = q.dims()[1] as f64;
     let scale = 1.0 / d_k.sqrt();

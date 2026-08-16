@@ -14,14 +14,14 @@ use burn::tensor::activation::softmax;
 // PyTorch does the same with masked_fill(mask, float('-inf')).
 //
 //
-type Backend = NdArray;
+type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let q = Tensor::<Backend, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &device);
-    let k = Tensor::<Backend, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &device);
-    let v = Tensor::<Backend, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &device);
+    let q = Tensor::<B, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &dev);
+    let k = Tensor::<B, 2>::from_floats([[1.0, 0.0], [0.0, 1.0]], &dev);
+    let v = Tensor::<B, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &dev);
 
     let d_k = q.dims()[1] as f64;
     let scale = 1.0 / d_k.sqrt();
@@ -29,7 +29,7 @@ fn main() {
     let scores = q.matmul(k.transpose()).mul_scalar(scale);
 
     // Additive causal mask: 0 where attention is allowed, -1e9 where it's forbidden.
-    let mask = Tensor::<Backend, 2>::from_floats([[0.0, -1.0e9], [0.0, 0.0]], &device);
+    let mask = Tensor::<B, 2>::from_floats([[0.0, -1.0e9], [0.0, 0.0]], &dev);
     let masked = scores + mask;
 
     let weights = softmax(masked, 1);

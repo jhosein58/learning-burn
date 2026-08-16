@@ -16,9 +16,9 @@ use burn::tensor::activation::softmax;
 //      4. concatenate heads back together swap_dims -> reshape      [seq, d_model]
 //      5. a final output projection                                 [seq, d_model]
 
-type Backend = NdArray;
+type B = NdArray;
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     let seq = 3;
     let d_model = 4;
@@ -26,20 +26,20 @@ fn main() {
     let d_k = d_model / n_heads; // 2
 
     // A toy input sequence: 3 tokens, each a 4-dim embedding.
-    let x = Tensor::<Backend, 2>::from_floats(
+    let x = Tensor::<B, 2>::from_floats(
         [
             [1.0, 0.0, 1.0, 0.0],
             [0.0, 1.0, 0.0, 1.0],
             [1.0, 1.0, 0.0, 0.0],
         ],
-        &device,
+        &dev,
     );
 
     // Learned projections (random init here — the shapes are what matter).
-    let wq: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wk: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wv: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wo: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
+    let wq: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wk: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wv: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wo: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
 
     // 1. project.
     let q = wq.forward(x.clone());
