@@ -11,7 +11,7 @@ use burn::tensor::Tensor;
 // Toy loss so the arithmetic is easy to follow: f'(w) = 2*(3w - 2)*3.
 // Analytic derivative: f(w) = (3w - 2)^2 At w = 0.5 that is -3.0.
 //
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 
 // Plain-Rust forward pass, used for the finite-difference estimate.
 fn loss_at(w: f64) -> f64 {
@@ -20,11 +20,11 @@ fn loss_at(w: f64) -> f64 {
 }
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
     let w_value = 0.5;
 
     // --- autodiff gradient ---
-    let w = Tensor::<Backend, 1>::from_floats([w_value as f32], &device).require_grad();
+    let w = Tensor::<B, 1>::from_floats([w_value as f32], &dev).require_grad();
     let z = w.clone().mul_scalar(3.0).sub_scalar(2.0);
     let loss = (z.clone() * z).sum();
     let grads = loss.backward();
