@@ -10,29 +10,29 @@ use burn::tensor::{Distribution, Tensor};
 //
 // Task: learn XOR, which needs a hidden layer + nonlinearity.
 
-type Backend = Autodiff<NdArray>;
+type B = Autodiff<NdArray>;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
-    let x = Tensor::<Backend, 2>::from_floats(
+    let x = Tensor::<B, 2>::from_floats(
         [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]],
-        &device,
+        &dev,
     );
-    let y = Tensor::<Backend, 2>::from_floats([[0.0], [1.0], [1.0], [0.0]], &device);
+    let y = Tensor::<B, 2>::from_floats([[0.0], [1.0], [1.0], [0.0]], &dev);
 
     let hidden = 8;
 
     // Random init breaks symmetry so hidden units can learn different features.
     // Biases start at zero. require_grad() marks each as a trainable leaf.
     let mut w1 =
-        Tensor::<Backend, 2>::random([2, hidden], Distribution::Uniform(-1.0, 1.0), &device)
+        Tensor::<B, 2>::random([2, hidden], Distribution::Uniform(-1.0, 1.0), &dev)
             .require_grad();
-    let mut b1 = Tensor::<Backend, 2>::zeros([1, hidden], &device).require_grad();
+    let mut b1 = Tensor::<B, 2>::zeros([1, hidden], &dev).require_grad();
     let mut w2 =
-        Tensor::<Backend, 2>::random([hidden, 1], Distribution::Uniform(-1.0, 1.0), &device)
+        Tensor::<B, 2>::random([hidden, 1], Distribution::Uniform(-1.0, 1.0), &dev)
             .require_grad();
-    let mut b2 = Tensor::<Backend, 2>::zeros([1, 1], &device).require_grad();
+    let mut b2 = Tensor::<B, 2>::zeros([1, 1], &dev).require_grad();
 
     let lr = 0.1;
 
