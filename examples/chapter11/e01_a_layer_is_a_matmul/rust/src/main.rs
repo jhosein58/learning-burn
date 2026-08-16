@@ -9,21 +9,18 @@ use burn::tensor::activation::relu;
 //  h  = relu(x @ W1)    hidden layer    (batch=2, 2 features -> 3 hidden units)
 //  out = h @ W2         output layer    (3 hidden -> 1 output)
 //
-// PyTorch counterpart (also from scratch):
-//  h   = torch.relu(x @ W1)
-//  out = h @ W2
-type Backend = NdArray;
+type B = NdArray;
 
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     // A batch of two examples, each with two features.
-    let x = Tensor::<Backend, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &device);
+    let x = Tensor::<B, 2>::from_floats([[1.0, 2.0], [3.0, 4.0]], &dev);
 
     // Fixed weights so every number below is reproducible.
-    let w1 = Tensor::<Backend, 2>::from_floats([[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]], &device);
+    let w1 = Tensor::<B, 2>::from_floats([[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]], &dev);
 
-    let w2 = Tensor::<Backend, 2>::from_floats([[0.7], [0.8], [0.9]], &device);
+    let w2 = Tensor::<B, 2>::from_floats([[0.7], [0.8], [0.9]], &dev);
     // Forward pass, layer by layer.
     let h_pre = x.clone().matmul(w1.clone()); // pre-activation [2, 3]
 
