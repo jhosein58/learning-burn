@@ -13,39 +13,39 @@ use burn::tensor::Tensor;
 // well-scaled. Stack N of these and you have a transformer. We write LayerNorm
 // by hand so there's no black box.
 //
-type Backend = NdArray;
+type B = NdArray;
 
 // LayerNorm over the last dimension: zero mean, unit variance per token row.
-fn layer_norm(x: Tensor<Backend, 2>) -> Tensor<Backend, 2> {
+fn layer_norm(x: Tensor<B, 2>) -> Tensor<B, 2> {
     let mean = x.clone().mean_dim(1); // [seq, 1]
     let centered = x - mean; // broadcast subtract
     let var = (centered.clone() * centered.clone()).mean_dim(1); // [seq, 1]
     centered / var.add_scalar(1e-5).sqrt() // normalize
 }
 fn main() {
-    let device = Default::default();
+    let dev = Default::default();
 
     let d_model = 4;
     let d_ff = 8;
 
-    let x = Tensor::<Backend, 2>::from_floats(
+    let x = Tensor::<B, 2>::from_floats(
         [
             [1.0, 0.0, 1.0, 0.0],
             [0.0, 1.0, 0.0, 1.0],
             [1.0, 1.0, 0.0, 0.0],
         ],
-        &device,
+        &dev,
     );
     // Self-attenti
     // on projections.
-    let wq: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wk: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wv: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
-    let wo: Linear<Backend> = LinearConfig::new(d_model, d_model).init(&device);
+    let wq: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wk: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wv: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
+    let wo: Linear<B> = LinearConfig::new(d_model, d_model).init(&dev);
 
     // Position-wise feed-forward: d_model -> d_ff -> d_model.
-    let ff1: Linear<Backend> = LinearConfig::new(d_model, d_ff).init(&device);
-    let ff2: Linear<Backend> = LinearConfig::new(d_ff, d_model).init(&device);
+    let ff1: Linear<B> = LinearConfig::new(d_model, d_ff).init(&dev);
+    let ff2: Linear<B> = LinearConfig::new(d_ff, d_model).init(&dev);
 
     // ---- sub-layer 1: self-attention + residual + norm ----
     let q = wq.forward(x.clone());
