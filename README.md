@@ -67,7 +67,7 @@ cargo run -- -c 3 -e 1 python
 
 ---
 
-## What's in the sixteen chapters
+## What's in the eighteen chapters
 
 **Foundations** — Rust for Python people (ownership, borrowing, traits — no Burn
 yet) · tensors · elementwise ops and broadcasting · matmul and the shape rule ·
@@ -79,11 +79,19 @@ norms, determinant, Gram matrix · autodiff.
 a network built from scratch, with the gradients derived by hand and then verified
 against autodiff.
 
-**Building** — attention, causal masking, multi-head, a full transformer block.
+**Building** — attention, causal masking, multi-head, a full transformer block ·
+**convolutions**: a CNN built as a `#[derive(Module)]`, trained on mini-batches, and
+quantised to int8 with no loss of accuracy.
 
 **Shipping** — save/load and the f32-vs-f16 trade-off · bare-metal: weights baked
 into the binary, backend-agnostic inference, int8 quantisation, memory footprint ·
-running pretrained models with Candle, and when to use it instead of Burn.
+**firmware in Rust**: a 28.9M-parameter language model on an ESP32-S3, walked through
+from [esp32-tinyLLM](https://github.com/Bellman281/esp32-tinyLLM) (needs an
+ESP32-S3-DevKitC N16R8 for the on-chip part; everything else runs on a laptop).
+
+**Data** — feeding the model: `Dataset`, `Batcher` and `DataLoader`; rows from a CSV
+with serde, a lazily decoded image folder, seeded splits and per-epoch shuffling,
+augmentation as a `Mapper`, and worker threads.
 
 Full list in [`examples/`](examples/).
 
