@@ -89,8 +89,11 @@ transformer block · **convolutions** from loops, with the backward pass by hand
 residual blocks, a small ResNet, a transformer encoder) · the `Learner`, metrics and
 checkpoints that resume exactly.
 
-**Part IV, Generative Models (15–18)** — language models and diffusion / flow
-matching, from scratch and the Burn way. *In preparation.*
+**Part IV, Generative Models (15–18)** — language models from scratch (byte-pair
+tokeniser, bigram, a tiny GPT with hand-written Adam, sampling, a KV cache) and the Burn
+way (a GPT with `burn::nn` and the `Learner`, trained on Shakespeare) · diffusion and flow
+matching from scratch on 2-D data (DDPM, DDIM, Euler and Heun) and the Burn way (a small
+U-Net with classifier-free guidance and reflow on images).
 
 **Part V, Shipping (19–22)** — saving and importing (burnpack, `.pt` and safetensors
 via `burn-store`, ONNX via `burn-onnx`) · serving: an axum server, batching and
@@ -99,8 +102,9 @@ micro-batching · bare-metal: weights in the binary, int8, the memory budget ·
 [esp32-tinyLLM](https://github.com/Bellman281/esp32-tinyLLM) (needs an
 ESP32-S3-DevKitC N16R8 for the on-chip part; everything else runs on a laptop).
 
-**Part VI, On the Edge (23–26)** — streaming inference, keyword spotting, real-time
-denoising, Wi-Fi sensing. *In preparation.*
+**Part VI, On the Edge (23–26)** — streaming inference: causal convolutions with state
+buffers, Google's `kws_streaming` modes ported to Burn, a GRU one frame at a time.
+Keyword spotting, real-time denoising and Wi-Fi sensing are *in preparation*.
 
 Full list in [`examples/`](examples/).
 
