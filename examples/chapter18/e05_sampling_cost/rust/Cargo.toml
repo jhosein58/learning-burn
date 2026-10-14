@@ -1,0 +1,11 @@
+[package]
+name = "c18e5"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+burn = { version = "0.22.0", features = ["flex"] }
+
+[features]
+# cargo run --release --features gpu   (needs a GPU: Metal, Vulkan or DX12)
+gpu = ["burn/wgpu"]
