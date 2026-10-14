@@ -1,0 +1,3 @@
+edition = "2024"
+# Keep short struct literals and calls on one line, so the listings stay compact.
+use_small_heuristics = "Max"
